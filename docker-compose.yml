@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: clinic_wait_bot_app
+    restart: unless-stopped
+    ports:
+      - "3456:3456"
+    environment:
+      - DATABASE_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./lineBot.log:/app/lineBot.log
+      - ./server.key:/app/server.key
+      - ./server.crt:/app/server.crt
+
+  postgres:
+    image: postgres:latest
+    container_name: clinic_wait_bot_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: tn
+      POSTGRES_PASSWORD: password4Work@
+      POSTGRES_DB: clinic_wait_bot_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tn -d clinic_wait_bot_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: clinic_wait_bot_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: t841222@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password4Work@
+    ports:
+      - "5433:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
+  pgadmin_data:

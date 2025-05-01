@@ -1,0 +1,19 @@
+{
+  "name": "clinic_queue_bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "cheerio": "^1.0.0",
+    "express": "^5.1.0",
+    "linebot": "^1.6.1",
+    "log4js": "^6.9.1",
+    "pg": "^8.15.6"
+  }
+}
