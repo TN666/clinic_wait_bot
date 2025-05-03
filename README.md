@@ -1,4 +1,4 @@
-# Clinic Queue Bot
+# Clinic wait Bot
 
 A LINE Bot-based clinic queue notification system that helps users track their position in the clinic's waiting queue and sends notifications when their turn is approaching.
 
