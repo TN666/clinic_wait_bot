@@ -5,8 +5,8 @@ const messages = {
     requestNumber: "請輸入你的號碼",
 
     // error message
-    invalidUrl: "請輸入正確的網址格式！\n輸入「重置」即可重新開始",
-    invalidNumber: "請輸入正確的號碼格式！\n輸入「重置」即可重新開始",
+    invalidUrl: "請輸入正確的網址格式！\n請從頭開始重新輸入\n請輸入掛號診所雲端候診中心網址",
+    invalidNumber: "請輸入正確的號碼格式！\n請從頭開始重新輸入\n請輸入掛號診所雲端候診中心網址",
     systemError: "系統發生錯誤，請稍後再試",
     nonBusinessHours: "目前非診所營業時間，請從頭開始重新輸入\n請輸入掛號診所雲端候診中心網址",
     

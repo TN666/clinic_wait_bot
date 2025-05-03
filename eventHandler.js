@@ -40,7 +40,7 @@ async function checkUserStatus(user) {
   if (!url || !number) {
     logger.info(`Skipping check for user ${userId}: missing url or number`);
     await bot.push(userId, messages.invalidUrl);
-    await handleReset(userId);
+    await deleteUser(userId);
     return;
   }
 
