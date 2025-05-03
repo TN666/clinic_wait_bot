@@ -2,6 +2,11 @@
 
 A LINE Bot-based clinic queue notification system that helps users track their position in the clinic's waiting queue and sends notifications when their turn is approaching.
 
+## Demo
+
+scan the QR Code to add the linebot!
+![掛號提醒](https://qr-official.line.me/sid/L/720ymnnv.png)
+
 ## Features
 
 - Automatic monitoring of clinic queue progress
