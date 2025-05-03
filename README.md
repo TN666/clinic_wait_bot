@@ -4,8 +4,9 @@ A LINE Bot-based clinic queue notification system that helps users track their p
 
 ## Demo
 
-scan the QR Code to add the linebot!
-![掛號提醒](https://qr-official.line.me/sid/L/720ymnnv.png)
+Scan the QR Code to add the linebot!
+
+![720ymnnv](https://github.com/user-attachments/assets/01ea0639-19ef-4082-b34b-b0fdd572d6cb)
 
 ## Features
 
