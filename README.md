@@ -65,4 +65,4 @@ docker-compose up -d
 
 ## License
 
-ISC License 
+MIT License 
