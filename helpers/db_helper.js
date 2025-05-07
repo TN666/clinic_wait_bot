@@ -16,20 +16,20 @@ const pool = new Pool({
 });
 
 pool.on('error', (err) => {
-  logger.error('数据库连接池错误:', err);
+  logger.error('Database connection pool error:', err);
 });
 
 pool.on('connect', () => {
-  logger.info('成功连接到数据库');
+  logger.info('successfully connected to the database');
 });
 
 pool.on('remove', () => {
-  logger.info('从连接池中移除客户端');
+  logger.info('removed from the database');
 });
 
 async function init_db() {
   try {
-    logger.info('开始初始化数据库...');
+    logger.info('starting database initialization');
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
         user_id TEXT PRIMARY KEY,
@@ -40,9 +40,9 @@ async function init_db() {
         updated_at TIMESTAMPTZ DEFAULT NOW()
       )
     `);
-    logger.info('数据库初始化成功');
+    logger.info('database initialization completed');
   } catch (err) {
-    logger.error('数据库初始化失败:', err);
+    logger.error('database initialization failed:', err);
     throw err;
   }
 }

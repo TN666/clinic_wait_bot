@@ -39,9 +39,9 @@ const extractFromUrl = async (url, options = {}) => {
         return extractFromHtml(response.data);
     } catch (error) {
         if (error.response) {
-            throw new Error(`HTTP请求失败: ${error.response.status} ${error.response.statusText}`);
+            throw new Error(`HTTP request failed: ${error.response.status} ${error.response.statusText}`);
         } else if (error.request) {
-            throw new Error(`网络请求失败: ${error.message}`);
+            throw new Error(`HTTP request failed: ${error.message}`);
         } else {
             throw error;
         }

@@ -27,10 +27,18 @@ async function handleUrlInput(userId, event) {
     await event.reply(messages.requestNumber); 
   } catch (error) {
     await event.reply(messages.invalidUrl);
+    await handleReset(userId, event);
+    logger.error(`Invalid URL provided by user ${userId}: ${event.message.text}`);
   }
 }
 
 async function handleNumberInput(userId, event) {
+  if (isNaN(parseInt(event.message.text))) {
+    await event.reply(messages.invalidNumber);
+    await handleReset(userId, event);
+    logger.error(`Invalid number provided by user ${userId}: ${event.message.text}`);
+    return;
+  }
   await updateUser(userId, { number: event.message.text });
   await event.reply(messages.numberSaved);
 }
@@ -39,8 +47,6 @@ async function checkUserStatus(user) {
   const { user_id: userId, url, number } = user;
   if (!url || !number) {
     logger.info(`Skipping check for user ${userId}: missing url or number`);
-    await bot.push(userId, messages.invalidUrl);
-    await deleteUser(userId);
     return;
   }
 
@@ -57,7 +63,7 @@ async function checkUserStatus(user) {
         `{"PortalID":"${portalId}","Vcode":"${vcode}",ReqFmt:"LIST"}`,
         { 
           headers: { "Content-Type": "text/plain" },
-          timeout: 10000 // 10秒超時
+          timeout: 10000
         }
       );
 
@@ -104,7 +110,7 @@ async function checkUserStatus(user) {
         }
       } else {
         logger.warn(`Retry ${3-retries} for user ${userId}:`, error);
-        await new Promise(resolve => setTimeout(resolve, 1000)); // 等待1秒後重試
+        await new Promise(resolve => setTimeout(resolve, 1000));
       }
     }
   }
